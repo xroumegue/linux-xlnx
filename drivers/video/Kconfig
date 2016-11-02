@@ -30,6 +30,10 @@ endmenu
 
 source "drivers/video/backlight/Kconfig"
 
+# Added by MYRI 
+source "drivers/video/xylon/Kconfig"
+source "drivers/video/sii902x/Kconfig"
+
 config VGASTATE
        tristate
        default n

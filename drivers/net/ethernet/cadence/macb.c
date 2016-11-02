@@ -1807,6 +1807,7 @@ static u32 macb_mdc_clk_div(struct macb *bp)
 		return gem_mdc_clk_div(bp);
 
 	pclk_hz = clk_get_rate(bp->pclk);
+	
 	if (pclk_hz <= 20000000)
 		config = MACB_BF(CLK, MACB_CLK_DIV8);
 	else if (pclk_hz <= 40000000)
