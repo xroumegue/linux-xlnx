@@ -18,6 +18,7 @@
 #include <linux/etherdevice.h>
 #include <linux/of_gpio.h>
 #include <linux/gpio/consumer.h>
+#include <linux/of.h>
 
 #define AT803X_INTR_ENABLE			0x12
 #define AT803X_INTR_ENABLE_AUTONEG_ERR		BIT(15)
@@ -366,6 +367,14 @@ static int at803x_aneg_done(struct phy_device *phydev)
 	return aneg_done;
 }
 
+#if defined(CONFIG_OF)
+static const struct of_device_id ar8035_dt_ids[] = {
+	{ .compatible = "atheros,ar8035" },
+	{ /* sentinel */ }
+};
+MODULE_DEVICE_TABLE(of, macb_dt_ids);
+#endif
+
 static struct phy_driver at803x_driver[] = {
 {
 	/* ATHEROS 8035 */
@@ -382,6 +391,17 @@ static struct phy_driver at803x_driver[] = {
 	.flags			= PHY_HAS_INTERRUPT,
 	.ack_interrupt		= at803x_ack_interrupt,
 	.config_intr		= at803x_config_intr,
+	#if 0
+	.driver		= {
+		.owner = THIS_MODULE,
+	},
+	#else
+	.driver		= {
+		.name   = "atheros,ar8035",
+		.owner	= THIS_MODULE,
+		.of_match_table	= of_match_ptr(ar8035_dt_ids),
+	},
+	#endif
 }, {
 	/* ATHEROS 8030 */
 	.phy_id			= ATH8030_PHY_ID,
