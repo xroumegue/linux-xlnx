@@ -408,17 +408,6 @@ static struct phy_driver at803x_driver[] = {
 	.read_status		= genphy_read_status,
 	.ack_interrupt		= at803x_ack_interrupt,
 	.config_intr		= at803x_config_intr,
-	#if 0
-	.driver		= {
-		.owner = THIS_MODULE,
-	},
-	#else
-	.driver		= {
-		.name   = "atheros,ar8035",
-		.owner	= THIS_MODULE,
-		.of_match_table	= of_match_ptr(ar8035_dt_ids),
-	},
-	#endif
 }, {
 	/* ATHEROS 8030 */
 	.phy_id			= ATH8030_PHY_ID,
