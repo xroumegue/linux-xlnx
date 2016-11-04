@@ -840,7 +840,6 @@ static struct fb_ops xylonfb_ops = {
 	.fb_copyarea = cfb_copyarea,
 	.fb_imageblit = cfb_imageblit,
 	.fb_cursor = NULL,
-	.fb_rotate = NULL,
 	.fb_sync = NULL,
 	.fb_ioctl = xylonfb_ioctl,
 	.fb_mmap = NULL,

@@ -28,7 +28,7 @@
 
 	memory {
 		device_type = "memory";
-		reg = <0x0 0x30000000>; // Reserved 256MB for xylonfb driver
+		reg = <0x0 0x30000000>; /* Reserved 256MB for xylonfb driver */
 	};
 
 	chosen {
@@ -185,7 +185,7 @@
 	status = "okay";
 };
 
-&ps7_axi {
+&amba{
 
 	gpio-leds {
 		compatible = "gpio-leds";

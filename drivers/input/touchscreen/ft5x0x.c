@@ -504,8 +504,8 @@ ft5x0x_ts_probe(struct i2c_client *client, const struct i2c_device_id *id)
     }
 
 	if (!ts_plat_data->polling_mode) {
-		err = request_irq(ts_plat_data->irq, ft5x0x_ts_interrupt, 
-				IRQF_DISABLED | IRQF_TRIGGER_FALLING, "ft5x0x_ts", ft5x0x_ts);
+		err = request_irq(ts_plat_data->irq, ft5x0x_ts_interrupt,
+				IRQF_TRIGGER_FALLING, "ft5x0x_ts", ft5x0x_ts);
 		if (err < 0) {
 			dev_err(&client->dev, "ft5x0x_probe: request irq failed\n");
 			goto exit_irq_request_failed;
