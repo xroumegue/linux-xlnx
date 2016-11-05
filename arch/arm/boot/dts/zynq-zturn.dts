@@ -107,7 +107,7 @@
     phy-mode = "rgmii-id";
     phy-handle = <&phy0>;
     phy0: phy@0 {
-        compatible = "atheros,ar8035";
+	phy_id = <0x00221620>, <0>;
         device_type = "ethernet-phy";
         reg = <0>;
     };
