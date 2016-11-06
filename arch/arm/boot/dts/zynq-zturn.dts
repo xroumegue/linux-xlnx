@@ -97,13 +97,7 @@
 };
 
 &gem0 {
-    compatible = "cdns,gem";
-    reg = <0xe000b000 0x4000>;
     status = "okay";
-    interrupts = <0 22 4>;
-    interrupt-parent = <&intc>;
-    clocks = <&clkc 30>, <&clkc 30>, <&clkc 13>;
-    clock-names = "pclk", "hclk", "tx_clk";
     phy-mode = "rgmii-id";
     phy-handle = <&phy0>;
     phy0: phy@0 {
