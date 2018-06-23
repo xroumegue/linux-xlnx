@@ -23,7 +23,7 @@
 		ethernet0 = &gem0;
 		serial0 = &uart1;
 		serial1 = &uart0;
-		spi0 = &qspi;
+		/*spi0 = &qspi;*/
 	};
 
 	memory {
@@ -33,7 +33,7 @@
 
 	chosen {
 		bootargs = "console=ttyPS0,115200 root=/dev/ram rw earlyprintk";
-		linux,stdout-path = "/amba/serial@e0001000";
+		stdout-path = "/amba/serial@e0001000";
 	};
 
 	htif_0: htif@43c00000 {
@@ -53,47 +53,47 @@
     xlnx,mio-gpio-mask = <0x5600>;
 };
 
-&qspi {
-	status = "okay";
-	is-dual = <0>;
-	num-cs = <1>;
-	xlnx,fb-clk = <0x1>;
-	xlnx,qspi-mode = <0x0>;
-	flash@0 {
-		compatible = "S25FLS128S";
-		reg = <0x0>;
-		spi-tx-bus-width = <1>;
-		spi-rx-bus-width = <4>;
-		spi-max-frequency = <50000000>;
-		#address-cells = <1>;
-		#size-cells = <1>;
-		partition@qspi-fsbl-uboot {
-			label = "qspi-fsbl-uboot";
-			reg = <0x0 0x100000>;
-		};
-		partition@qspi-linux {
-			label = "qspi-linux";
-			reg = <0x100000 0x500000>;
-		};
-		partition@qspi-device-tree {
-			label = "qspi-device-tree";
-			reg = <0x600000 0x20000>;
-		};
-		partition@qspi-rootfs {
-			label = "qspi-rootfs";
-			reg = <0x620000 0x5E0000>;
-		};
-		partition@qspi-bitstream {
-			label = "qspi-bitstream";
-			reg = <0xC00000 0x400000>;
-		};
-	};
-};
+/*&qspi {*/
+	/*status = "okay";*/
+	/*is-dual = <0>;*/
+	/*num-cs = <1>;*/
+	/*xlnx,fb-clk = <0x1>;*/
+	/*xlnx,qspi-mode = <0x0>;*/
+	/*flash@0 {*/
+		/*compatible = "S25FLS128S";*/
+		/*reg = <0x0>;*/
+		/*spi-tx-bus-width = <1>;*/
+		/*spi-rx-bus-width = <4>;*/
+		/*spi-max-frequency = <50000000>;*/
+		/*#address-cells = <1>;*/
+		/*#size-cells = <1>;*/
+		/*partition@qspi-fsbl-uboot {*/
+			/*label = "qspi-fsbl-uboot";*/
+			/*reg = <0x0 0x100000>;*/
+		/*};*/
+		/*partition@qspi-linux {*/
+			/*label = "qspi-linux";*/
+			/*reg = <0x100000 0x500000>;*/
+		/*};*/
+		/*partition@qspi-device-tree {*/
+			/*label = "qspi-device-tree";*/
+			/*reg = <0x600000 0x20000>;*/
+		/*};*/
+		/*partition@qspi-rootfs {*/
+			/*label = "qspi-rootfs";*/
+			/*reg = <0x620000 0x5E0000>;*/
+		/*};*/
+		/*partition@qspi-bitstream {*/
+			/*label = "qspi-bitstream";*/
+			/*reg = <0xC00000 0x400000>;*/
+		/*};*/
+	/*};*/
+/*};*/
 
 &usb0 {
 	status = "okay";
 	dr_mode = "host";
-	phy_type = "ulpi";	
+	phy_type = "ulpi";
 };
 
 &gem0 {
@@ -133,7 +133,7 @@
 //  bus-id = <0x0>;
     clock-frequency = <400000>;
     xlnx,has-interrupt = <0x1>;
-	
+
     adxl345@53 {
         compatible = "adi,adxl34x","adxl34x";
         reg = <0x53>;
@@ -163,7 +163,7 @@
 	status = "okay";
     clock-frequency = <400000>;
     xlnx,has-interrupt = <0x1>;
-    
+
 	ft0x5x_ts@38 {
         compatible = "ft5x06_ts";
         reg = <0x38>;
@@ -171,7 +171,7 @@
         tp_resetn = <&gpio0 107 1>;
 	    polling_mode = /bits/ 8 <0>;
         multi_touch = /bits/ 8 <0>;
-    };	
+    };
 };
 */
 
@@ -214,13 +214,13 @@
 			linux,default-trigger = "none";
 		};
 	};
-	
+
     gpio-beep {
             compatible = "gpio-beeper";
             lable = "pl-beep";
             gpios = <&gpio0 117 0>;
         };
-	
+
 /* MYIR, added USR key */
 	gpio-keys {
 		compatible = "gpio-keys";
