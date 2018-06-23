@@ -516,7 +516,7 @@ config MISC_RTSX
 config MYIR_STLM75X
     tristate "MYIR stlm75x temperature sensor"
     depends on ARCH_ZYNQ
-	default y
+	default n
     help
       This option enables support for the stlm75x temperature driver.
 
